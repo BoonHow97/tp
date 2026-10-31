@@ -262,12 +262,14 @@ _{Explain here how the data archiving feature will be implemented}_
 **Target user profile**:
 
 * works in debt collection or recovery
-* manages numerous debtor contacts, repayment commitments, outstanding amounts, and follow-ups
+* manages numerous debtor contacts, outstanding amounts, and interaction histories
 * is comfortable with desktop applications
 * can type quickly and prefers keyboard commands to mouse-heavy workflows
 * needs efficient access to accurate debtor contact and case information
 
-**Value proposition**: OSPS aims to help fast-typing debt recovery employees organize debtor details, repayment status, payment dates, and interaction notes in one place through keyboard-driven search and update workflows, reducing administrative work, lowering the risk of missed follow-ups, and helping users prioritize cases while keeping contact management as the application's core focus.
+**Value proposition**: OSPS helps fast-typing debt recovery employees organise debtor details, outstanding amounts,
+and interaction notes through keyboard-driven search and update workflows. This reduces administrative work while
+keeping contact management as the application's core focus.
 
 
 ### User stories
@@ -278,24 +280,15 @@ Priorities: High (must have) - `* * *`, Medium (should have) - `* *`, Low (could
 | -------- | ------ | ------------ | ---------------- |
 | `* * *` | debt recovery agent | add a new debtor with their contact details and outstanding amount | officially register their case and begin tracking it |
 | `* * *` | debt recovery agent | append interaction notes to a debtor's profile | keep an accurate, chronological history of call discussions |
-| `* * *` | debt recovery agent | view all active cases sorted by the closest follow-up date | identify and prioritise people to call today |
-| `* * *` | debt recovery agent | mark a debtor's case as settled or delete it | keep the active dashboard uncluttered after recovery |
-| `* * *` | debt recovery agent | view a debtor's complete profile | see their contact details, debt, deadlines, status, and notes together |
+| `* * *` | debt recovery agent | view all active debtors | see the cases currently being tracked |
+| `* * *` | debt recovery agent | delete a debtor record | remove a case that should no longer be tracked |
+| `* * *` | debt recovery agent | view a debtor's complete profile | see their contact details, outstanding amount, and notes together |
 | `* *` | fast-typing employee | use GNU-style keyboard commands to execute all actions | maintain my productivity without needing to reach for the mouse |
-| `* *` | busy debt collector | quickly search for a debtor by name or phone number | instantly pull up their case details when they unexpectedly call |
-| `* *` | debt recovery agent | set a follow-up deadline and promised payment date for a debtor | avoid missing critical contact windows |
+| `* *` | busy debt collector | quickly search for a debtor by name | instantly pull up their case details when they unexpectedly call |
 | `* *` | debt recovery agent | update a debtor's outstanding amount | ensure the system reflects partial repayments accurately |
 | `* *` | new team member | view a help menu summarising all available commands | learn the application's syntax without external documentation |
 | `* *` | debt recovery agent | edit a debtor's contact details | keep their phone number, email address, and postal address current |
-| `* *` | considerate debt collector | record a debtor's preferred contact method and contactable hours | contact them through an appropriate channel at a suitable time |
-| `* *` | debt recovery agent | record the outcome of each contact attempt | track whether the debtor answered, requested a callback, or was unreachable |
-| `* *` | debt recovery agent | assign a recovery stage to a debtor | distinguish new, contacted, negotiating, disputed, and broken-promise cases |
-| `* *` | busy debt collector | list debtors whose follow-ups are due or overdue | immediately identify cases requiring attention |
-| `* *` | debt recovery agent | filter debtor contacts by recovery stage | focus on a category of cases without scanning the entire list |
-| `*` | careful employee | undo the most recent command | recover quickly after an accidental deletion or incorrect amount |
-| `*` | fast-typing employee | find debtors using partial or slightly misspelled names | retrieve the right contact without remembering the exact spelling |
-| `*` | careful employee | preview an update or deletion command | verify the affected debtor and changes before committing a risky action |
-| `*` | compliance-conscious debt recovery agent | export a debtor's profile and interaction history | provide a case record for auditing or authorised handover |
+| `*` | fast-typing employee | find debtors using case-insensitive name keywords | retrieve the right contact without matching its exact capitalisation |
 
 ### Use cases
 
@@ -351,8 +344,7 @@ specified otherwise)
 1.  Debt recovery agent requests to view the list of debtor records.
 2.  OSPS shows a list of debtor records with summary information.
 3.  Debt recovery agent selects a debtor record to view in detail.
-4.  OSPS shows the selected debtor's profile, including debtor details, outstanding balance, repayment status,
-    payment dates, and interaction notes where available.
+4.  OSPS shows the selected debtor's profile, including debtor details, outstanding balance, and interaction notes.
 
     Use case ends.
 
@@ -433,7 +425,7 @@ with a representative dataset of 1,000 debtor records.
    Java `25` installed. The documented setup procedure must be sufficient to launch
    OSPS and complete a basic debtor-listing workflow on each operating system.
 2. **NFR-Capacity and responsiveness**: OSPS must retain at least 1,000 debtor
-   records, including balances, repayment statuses, dates, and interaction notes.
+   records, including balances and interaction notes.
    With that dataset, listing debtors and opening one debtor's profile must each
    complete within 2 seconds.
 3. **NFR-Persistence**: After a successful change, restarting OSPS must reproduce
@@ -449,14 +441,11 @@ with a representative dataset of 1,000 debtor records.
 
 ### Glossary
 
-* **Debt recovery agent**: An OSPS user who manages debtor records and follows up on outstanding balances.
+* **Debt recovery agent**: An OSPS user who manages debtor records and outstanding balances.
 * **Debtor**: A person or organisation with an outstanding payment obligation recorded in OSPS.
-* **Follow-up date**: The date on which an agent next plans to contact or review a debtor's case.
 * **Interaction history**: The collection of interaction notes associated with a debtor.
 * **Interaction note**: A dated record of a contact or other relevant interaction with a debtor.
 * **Outstanding balance**: The amount that remains to be paid under a debtor's payment scheme.
-* **Payment scheme**: The agreed plan describing how and when an outstanding balance is repaid.
-* **Repayment status**: An indicator of the current progress of a debtor's payment scheme.
 
 --------------------------------------------------------------------------------------------------------------------
 
